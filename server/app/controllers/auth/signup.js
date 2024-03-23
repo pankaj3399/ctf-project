@@ -20,7 +20,7 @@ const signup = catchAsync(
         await User.create({...req.body, verificationToken: otp});
         
         // send otp to the user email
-        // await sendMail(req.body.email, otp);
+        await sendMail(req.body.email, otp);
 
       
 

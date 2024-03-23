@@ -6,12 +6,14 @@ import config from './../server/config.js';
 
 const transporter = nodemailer.createTransport({
 
-    service: 'gmail',
     host: 'smtp.gmail.com',
+    port: 587,
+    secure: false,
     auth: {
         user: config.EMAIL,
         pass: config.EMAIL_PASSWORD
     }
+   
 });
 
 const sendMail = async (to, otp) => {
@@ -26,5 +28,7 @@ const sendMail = async (to, otp) => {
 
     const res = await transporter.sendMail(mailOptions);
 }
+
+
 
 export default sendMail;
