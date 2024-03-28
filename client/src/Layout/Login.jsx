@@ -35,8 +35,15 @@ export default function Login() {
     const { control, handleSubmit, formState: { errors } } = useForm({ resolver: yupResolver(loginSchema) });
 
     // handle login
-    const onSubmit = (data) => {
-        login(data)
+    const onSubmit = async (data) => {
+        const res = await login(data);
+        console.log(res);
+        if (res.error) {
+            // if the error is user not verified then redirect to verify otp page
+            if (res?.error?.data?.message === 'User is not verified!') {
+                navigate('/verify-otp?email=' + data.email)
+            }
+        }
     };
 
     // if api call success then redirect to dashboard

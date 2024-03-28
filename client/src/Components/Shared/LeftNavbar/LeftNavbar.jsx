@@ -7,51 +7,49 @@ import { NavLink } from 'react-router-dom';
 
 const LeftNavbar = () => {
 
+    const categories = [
+        {
+            id:1,
+            name:'web exploitation',
+        },
+        {   
+            id:2,
+            name:'cryptography',
+        },
+        {
+            id:3,
+            name:'forensics',
+        },
+        {   
+            id:4,
+            name:'reverse engineering',
+        }
+    ]
+
 
     return (
-        <div className='pt-5 ps-3 w-1/5 bg-[#FAFAFA] h-screen sticky top-0'>
+        <div className='pt-5 ps-3 w-1/5 bg-[#FAFAFA] h-auto'>
             <div>
                 <div className='flex items-center text-base	font-bold'>
-                    <img src={logo} alt="" />
-                    <p className='ms-2'>go-digi-transformation.</p>
+                    <p className='ms-2'>Categories</p>
                 </div>
-                <ul className='mt-14 navitems'>
-                    <NavLink className={
-                        ({ isActive }) => {
-                            return (
-                                isActive && 'active'
-                            )
-                        }
-                    } to={'/library'}>
-                        <li className='flex font-extrabold gap-[22px] text-[15px]  p-4 rounded-md items-center'>
-                            <FiBook className='text-[16px]'></FiBook>
-                            <a>Bibliothek</a>
-                        </li>
-                    </NavLink >
-                    <NavLink className={
-                        ({ isActive }) => {
-                            return (
-                                isActive && 'active'
-                            )
-                        }
-                    } to={'/chat'}>
-                        <li className='flex font-extrabold gap-[22px] text-[15px]  p-4 rounded-md items-center'>
-                            <BsChatDots className='text-[16px]'></BsChatDots>
-                            <a>Chat</a>
-                        </li>
-                    </NavLink >
-                    <NavLink className={
-                        ({ isActive }) => {
-                            return (
-                                isActive && 'active'
-                            )
-                        }
-                    } to={'/myPrompts'}>
-                        <li className='flex font-extrabold gap-[22px] text-[15px]  p-4 rounded-md '>
-                            <AiOutlineStar className='text-[18px]'></AiOutlineStar>
-                            <a>Meine Prompts</a>
-                        </li>
-                    </NavLink >
+                <ul className='mt-5 navitems'>
+                   {
+                        categories.map((category, index) => (
+                            <NavLink className={
+                                ({ isActive }) => {
+                                    return (
+                                        isActive && 'active'
+                                    )
+                                }
+                            } to={'categories/'+category.id}>
+                                <li className='flex font-medium gap-[16px] text-sm  p-3 rounded-md items-center'>
+                                    <a>{category?.name}</a>
+                                </li>
+                            </NavLink >
+                        ))
+                   }
+              
 
                 </ul>
             </div>

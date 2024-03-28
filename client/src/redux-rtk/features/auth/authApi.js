@@ -73,6 +73,32 @@ export const authApi = apiSlice.injectEndpoints({
             }
         }),
 
+        // resend otp endpoint here
+        resendOtp: builder.mutation({
+            query: (data) => ({
+                url: 'auth/resend-otp',
+                method: 'POST',
+                body: data
+            }),
+            async onQueryStarted(arg, { queryFulfilled }) {
+                try {
+                    const result = await queryFulfilled;
+                    toast.success(result.data.message);
+                } catch (error) {
+                    toast.error(error.error.data.message);
+                }
+            }
+        }),
+
+        // check if user is verified endpoint here
+        checkIfUserVerified: builder.query({
+            query: (data) => ({
+                url: `auth/check-verification`,
+                method: 'POST',
+                body: data
+            }),
+        }),
+
 
         // get profile endpoint here
         getProfile: builder.query({
@@ -95,5 +121,7 @@ export const {
     useSignupMutation,
     useLoginMutation,
     useGetProfileQuery,
-    useVerifyOtpMutation
+    useVerifyOtpMutation,
+    useResendOtpMutation,
+    useCheckIfUserVerifiedQuery
 } = authApi;

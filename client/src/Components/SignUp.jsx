@@ -46,10 +46,11 @@ const SignUp = () => {
         // console.log(data)
         const response = await signup(data)
         console.log(response)
-        if (response.data.success) {
+        if (response.data?.success) {
             setOtpSent(true)
             setEmail(data.email)
         }
+        
     };
     const verifyOtp = (data) => {
         console.log(otp)
