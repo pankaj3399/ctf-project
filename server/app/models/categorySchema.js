@@ -1,5 +1,6 @@
 // create a category schema for CTF challenges
 import mongoose from 'mongoose';
+import Challanges from './challangesSchema.js';
 
 const categorySchema = new mongoose.Schema({
     name: {
@@ -10,7 +11,14 @@ const categorySchema = new mongoose.Schema({
     description: {
         type: String,
     }
+
 }, { timestamps: true });
+
+categorySchema.virtual('challenges', {
+    ref: "Challanges",
+    localField: '_id',
+    foreignField: 'category'
+});
 
 const Category = mongoose.model('Category', categorySchema);
 

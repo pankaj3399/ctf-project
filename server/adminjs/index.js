@@ -46,9 +46,6 @@ const adminOptions = {
                     description:{
                         type: 'richtext',
                     },
-                    image:{
-                        type: 'file',
-                    }
                 }
             }
         },

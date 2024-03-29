@@ -3,31 +3,18 @@ import { FiBook } from "@react-icons/all-files/fi/FiBook";
 import { BsChatDots } from "@react-icons/all-files/bs/BsChatDots";
 import { AiOutlineStar } from "@react-icons/all-files/ai/AiOutlineStar";
 import { NavLink } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useGetCategoriesQuery } from '../../../redux-rtk/features/category/categoryApi';
+import LoadingIcon from '../LoadingIcon/LoadingIcon';
+import { useEffect } from 'react';
 
 
 const LeftNavbar = () => {
 
 
-    const categories = [
-        {
-            id: 1,
-            name: 'web exploitation',
-        },
-        {
-            id: 2,
-            name: 'cryptography',
-        },
-        {
-            id: 3,
-            name: 'forensics',
-        },
-        {
-            id: 4,
-            name: 'reverse engineering',
-        },
 
-    ]
+    useGetCategoriesQuery()
+    const categories = useSelector((state) => state.categories.categories);
 
 
     return (
@@ -49,14 +36,15 @@ const LeftNavbar = () => {
                         </li>
                     </NavLink >
                     {
-                        categories.map((category, index) => (
-                            <NavLink key={index} className={
+                        categories &&
+                        categories?.map((category, index) => (
+                            <NavLink key={category?._id} className={
                                 ({ isActive }) => {
                                     return (
                                         isActive ? 'active' :''
                                     )
                                 }
-                            } to={'categories/' + category.id}>
+                            } to={'categories/' + category?._id}>
                                 <li className='flex font-medium gap-[16px] text-sm  p-3 rounded-md items-center'>
                                     <p>{category?.name}</p>
                                 </li>

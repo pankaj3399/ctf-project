@@ -17,7 +17,6 @@ const Dashboard = () => {
         // on change of id set activeCategory to id
         dispatch(setSelectedCategory(id));
 
-        console.log(id)
 
     }, [id])
 

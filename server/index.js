@@ -7,6 +7,7 @@ import bootstrap from './utils/server/bootstrap.js';
 import globalErrorHandler from './utils/helpers/globalErrorHandler.js';
 import 'dotenv/config'
 import { admin, adminRouter } from './adminjs/index.js';
+import AdminJSExpress from '@adminjs/express'
 
 
 const app = express();
@@ -14,7 +15,10 @@ const app = express();
 //middleware
 
 
-app.use(admin.options.rootPath, adminRouter)
+const adminJsRouter = process.env.NODE_ENV === 'production' ? adminRouter : AdminJSExpress.buildRouter(admin)
+
+
+app.use(admin.options.rootPath, adminJsRouter)
 
 
 if (process.env.NODE_ENV === 'production') {
