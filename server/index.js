@@ -6,16 +6,28 @@ import httpStatus from 'http-status';
 import bootstrap from './utils/server/bootstrap.js';
 import globalErrorHandler from './utils/helpers/globalErrorHandler.js';
 import 'dotenv/config'
+import { admin, adminRouter } from './adminjs/index.js';
+
 
 const app = express();
 
 //middleware
+
+
+app.use(admin.options.rootPath, adminRouter)
+
+
+if (process.env.NODE_ENV === 'production') {
+    admin.initialize();
+} else {
+    admin.watch();
+}
+
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
 
-// all routes
 app.use('/api/v1', routes);
 
 // files route
