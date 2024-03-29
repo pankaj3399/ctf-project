@@ -18,7 +18,7 @@ import { ImCross } from "@react-icons/all-files/im/ImCross";
 import { useEffect, useState } from 'react';
 import { FiEdit3 } from "@react-icons/all-files/fi/FiEdit3";
 import LoadingIcon from "../../../Shared/LoadingIcon/LoadingIcon";
-import { useCreateChatMutation } from "../../../../redux-rtk/features/chat/chatApi";
+import { useCreateChatMutation } from "../../../../redux-rtk/features/chat/categoriesApi";
 import toast from "react-hot-toast";
 import { useNavigate } from 'react-router-dom';
 
@@ -54,34 +54,28 @@ export function Prompt({ prompt }) {
 
     return (
         <>
-            <Card className=" cursor-pointer max-w-[24rem] overflow-hidden my-[5px] rounded-sm relative" onClick={() => handleOpen("lg")}>
+            <Card className="cursor-pointer max-w-[24rem] overflow-hidden my-[5px] rounded-sm relative" onClick={() => handleOpen("lg")}>
                 <CardHeader
                     floated={false}
                     shadow={false}
                     color="transparent"
-                    className="m-0 rounded-none"
+                    className="m-0 rounded-none p-2"
                 >
-                    <img
-                        className="w-full"
-                        src={image?.url}
-                        alt="ui/ux review check"
-                    />
-                    {
-                        prompt.edit ? <button className="bg-white text-black py-1 ps-5 w-[60px] rounded-md flex items-center text-xs ms-auto right-3 absolute top-3 ">Edit<FiEdit3 ></FiEdit3></button> : <></>
-                    }
+                    <h2 className="text-sm font-medium flex w-full justify-between gap-2">Reverse Engineering  <span className="font-normal text-md text-red-600">5</span> </h2>
+                  
                 </CardHeader>
                 <CardBody className="p-[10px]">
                     <Typography variant="h4" color="blue-gray" className="text-[17px] ">
-                        {name}
-                    </Typography>
-                    <Typography variant="lead" color="gray" className="mt-3 font-normal text-[14px]" >
-                        {
+                       Name of the Challenge
+                       {/* {
                             description?.length > 135 ? description?.slice(0, 135) + '...' : description
-                        }
+                        } */}
                     </Typography>
+            
                 </CardBody>
 
             </Card>
+            
             <>
                 <Dialog
                     open={

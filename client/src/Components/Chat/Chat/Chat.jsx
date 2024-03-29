@@ -2,7 +2,7 @@ import { BsChatDots } from "@react-icons/all-files/bs/BsChatDots";
 import ChatHistory from "../ChatHistory/ChatHistory";
 import Messages from "../Messages/Messages";
 import { useEffect, useState } from "react";
-import { useGetChatsByAuthIdQuery } from "../../../redux-rtk/features/chat/chatApi";
+import { useGetChatsByAuthIdQuery } from "../../../redux-rtk/features/chat/categoriesApi";
 
 const Chat = () => {
 

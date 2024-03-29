@@ -16,7 +16,7 @@ import { IoMdSend } from "@react-icons/all-files/io/IoMdSend";
 import { useEffect, useRef, useState } from "react";
 import { cx } from "../../../hooks/helpers";
 import toast from "react-hot-toast";
-import { useCreateChatMutation } from "../../../redux-rtk/features/chat/chatApi";
+import { useCreateChatMutation } from "../../../redux-rtk/features/chat/categoriesApi";
 import LoadingIcon from "../../Shared/LoadingIcon/LoadingIcon";
 
 const menuItems = [

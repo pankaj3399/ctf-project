@@ -1,19 +1,19 @@
 import { apiSlice } from "../api/apiSlice";
 import toast from 'react-hot-toast';
-import { chatLogs } from "./chatSlice";
+import { chatLogs, setCategories } from "./categoriesSlice";
 
-export const chatApi = apiSlice.injectEndpoints({
+export const categoriesApi = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
 
         // all all chats endpoint here
-        getChatsByAuthId: builder.query({
-            query: () => 'chat/authenticated-id',
+        getAllCategories: builder.query({
+            query: () => '/categories',
             keepUnusedDataFor: 600,
-            providesTags: ['Chats'],
+            providesTags: ['categories'],
             async onQueryStarted(arg, { queryFulfilled, dispatch }) {
                 try {
                     const result = await queryFulfilled;
-                    dispatch(chatLogs(result.data.data))
+                    dispatch(setCategories(result.data.data))
                 } catch (error) {
                     toast.error(error.error.data.message);
                 }
@@ -44,4 +44,4 @@ export const chatApi = apiSlice.injectEndpoints({
 export const {
     useCreateChatMutation,
     useGetChatsByAuthIdQuery
-} = chatApi;
+} = categoriesApi;

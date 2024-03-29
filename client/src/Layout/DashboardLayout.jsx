@@ -4,10 +4,12 @@ import TopNavbar from "../Components/Shared/TopNavbar/TopNavbar";
 
 const DashboardLayout = () => {
     return (
-        <div className="flex gap-2 w-full h-full min-h-screen relative">
-            <LeftNavbar></LeftNavbar>
-            <div className="w-full h-full max-h-screen overflow-auto relative flex flex-col">
-           
+        <div className="gap-2 w-full h-screen -mt-16 pt-14 fixed flex">
+            <div className="w-[300px] border-r border-r-gray-200 shadow-md overflow-auto">
+                <LeftNavbar></LeftNavbar>
+            </div>
+            <div className="w-full h-full pb-12 pt-5">
+
                 <Outlet></Outlet>
             </div>
         </div>
