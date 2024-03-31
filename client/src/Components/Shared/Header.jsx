@@ -12,7 +12,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUrl } from "../../configs/constants";
 import { userLoggedOut } from "../../redux-rtk/features/auth/authSlice";
-
+import ctfLogo from "../../assets/Logo/ctflogo.png";
 export function Header() {
 
     const navigate = useNavigate();
@@ -108,7 +108,10 @@ export function Header() {
 
                     className="mr-4 cursor-pointer py-1.5 font-medium text-2xl"
                 >
-                    <Link to="/">CyberLand</Link>
+                    <Link to="/" className="flex items-center gap-2 font-bold text-red-600">
+                        <img src={ctfLogo} className="w-[60px]" alt="" />
+                        CyberLand
+                    </Link>
                 </Typography>
                 <div className="flex items-center gap-6">
                     <div className="mr-4 hidden lg:block">{navList}</div>

@@ -1,11 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import Home from "../Layout/DashboardLayout";
-import Library from "../Components/Library/Library";
-import Chat from "../Components/Chat/Chat/Chat";
-import MyPrompts from "../Components/MyPrompts/MyPrompts/MyPrompts";
 import Login from "../Layout/Login";
-import CreateCharacter from "../Components/Create/CreateCharacter/CreateCharacter";
-import CreatePrompts from "../Components/Create/CreatePrompts/CreatePrompts";
 import Dashboard from "../Components/Dashboard";
 import Main from "../Layout/Main";
 import LandingPage from "../Components/LandingPage/LandingPage";
@@ -14,6 +8,7 @@ import VerifyOtp from "../Components/VerifyOtp";
 import CheckIfUserVerified from "../Components/Middleware/CheckIfUserVerified";
 import RequireAuth from "../Components/RequiredAuth/RequireAuth";
 import DashboardLayout from "../Layout/DashboardLayout";
+import Rankings from "../Components/Rankings/Rankings";
 
 export const router = createBrowserRouter([
   
@@ -46,13 +41,13 @@ export const router = createBrowserRouter([
                         element: <RequireAuth><Dashboard/></RequireAuth>
                     },
                     {
-                        path: 'categories/:id',
-                        element: <RequireAuth><Dashboard/></RequireAuth>
+                        path: 'rankings/',
+                        element: <RequireAuth><Rankings/></RequireAuth>
                     },
                     {
-                        path: 'library',
-                        element: <Library></Library>
-                    },
+                        path: 'categories/:id',
+                        element: <RequireAuth><Dashboard/></RequireAuth>
+                    }
                 ]
             },
           

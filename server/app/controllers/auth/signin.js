@@ -5,6 +5,7 @@ import sendResponse from "../../../utils/helpers/SendResponse.js";
 import catchAsync from "../../../utils/helpers/catchAsync.js";
 import ApiError from "../../../utils/errors/ApiError.js";
 import generateToken from "../../../utils/helpers/jwt/generateToken.js";
+import UserAttempts from '../../models/userAttemps.js';
 
 const signin = catchAsync(
     async (req, res) => {
@@ -29,6 +30,10 @@ const signin = catchAsync(
 
         // user data
         const { password, ...pwd } = user;
+
+        // add the list of solved challenges to the user object
+        const solvedChallenges = await UserAttempts.find({ user: user._id, isCorrect: true }).select('challenge').lean();
+        pwd.solvedChallenges = solvedChallenges.map(challenge => challenge.challenge);
 
         sendResponse(res, {
             statusCode: httpStatus.OK,
