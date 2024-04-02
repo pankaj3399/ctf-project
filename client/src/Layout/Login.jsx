@@ -37,7 +37,7 @@ export default function Login() {
     // handle login
     const onSubmit = async (data) => {
         const res = await login(data);
-        console.log(res);
+        // console.log(res);
         if (res.error) {
             // if the error is user not verified then redirect to verify otp page
             if (res?.error?.data?.message === 'User is not verified!') {
@@ -49,14 +49,14 @@ export default function Login() {
     // if api call success then redirect to dashboard
     useEffect(() => {
         if (isSuccess) {
-            navigate(from)
+            window.location.href = from
         }
     }, [isSuccess, navigate, from])
 
     // if authenticated then redirect to dashboard
     useEffect(() => {
         if (auth.isAuthenticated) {
-            navigate(from)
+            window.location.href = from
         }
     }, [auth.isAuthenticated, navigate, from])
 

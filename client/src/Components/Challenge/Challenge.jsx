@@ -35,7 +35,7 @@ export function Challenge({ challenge }) {
     const [size, setSize] = useState(null);
     const handleOpen = (value) => setSize(value);
 
-    const { title, description, category, points, author, isSolved } = challenge;
+    const { title, description, category, points, author, isSolved, createdBy } = challenge;
     const descriptionHTML = { __html: description };
 
     const [submitSolution, { isLoading, isSuccess, isError }] = useSubmitSolutionMutation();
@@ -82,18 +82,18 @@ export function Challenge({ challenge }) {
 
     return (
         <>
-            <Card className={`cursor-pointer max-w-[24rem] overflow-hidden my-[5px] rounded-sm relative ${isSolved && 'border-2 border-green-400 shadow-md shadow-green-400'}`} onClick={() => handleOpen("lg")}>
+            <Card className={`bg-[#262626] cursor-pointer max-w-[24rem] overflow-hidden my-[5px] rounded-sm relative ${isSolved && 'border-2 border-green-400 shadow-md shadow-green-400'}`} onClick={() => handleOpen("lg")}>
                 <CardHeader
                     floated={false}
                     shadow={false}
                     color="transparent"
                     className="m-0 rounded-none p-2"
                 >
-                    <h2 className="text-sm font-medium flex w-full justify-between gap-2">{category?.name}  <span className="font-normal text-md text-red-600">{points}</span> </h2>
+                    <h2 className="text-sm font-medium flex w-full justify-between gap-2 text-red-600">{category?.name}  <span className="font-normal text-md text-red-600">{points}</span> </h2>
 
                 </CardHeader>
                 <CardBody className="p-[10px]">
-                    <Typography color="blue-gray" className="text-[14px] font-bold">
+                    <Typography color="white" className="text-[14px] font-bold">
                         {title}
                     </Typography>
 
@@ -114,9 +114,9 @@ export function Challenge({ challenge }) {
                     }}
                     className="bg-[#303030] text-white rounded-none w-[1200px] modal 2xl:max-w-[1200px] lg:max-w-[1200px] md:max-w-[1200px] max-w-[1200px] md:w-5/6 lg:w-3/4 2xl:w-3/5 min-w-[90%] md:min-w-[83.333333%] lg:min-w-[1200px] 2xl:min-w-[1200px] "
                 >
-                    <DialogBody className="h-[32rem] text-white">
-                        <div className="flex h-full overflow-auto max-w-[1200px] mx-auto">
-                            <div className="w-3/4 p-5 pr-8 overflow-y-auto">
+                    <DialogBody className="h-[42rem] text-white">
+                        <div className=" h-full overflow-auto max-w-[1200px] mx-auto reative">
+                            <div className="w-full p-5 pr-8 overflow-y-auto">
 
 
                                 <div>
@@ -132,7 +132,7 @@ export function Challenge({ challenge }) {
                                     <div className="mt-2 flex gap-2 items-center">
                                         {/* add User avatar Icon */}
                                         <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="user" className="w-[20px] h-[20px] rounded-full" />
-                                        <p>{author}</p>
+                                        <p>{createdBy === 'admin' ? 'admin' : author?.email}</p>
 
                                     </div>
                                     <div className="flex my-2">
@@ -156,17 +156,8 @@ export function Challenge({ challenge }) {
                                 </div>
                             </div>
 
-                            <div className=" w-1/4 p-[25px] relative">
-                                <div className="absolute top-0 right-0 justify-end items-center">
-                                    <Button
-                                        variant="text"
-
-                                        onClick={() => handleOpen(null)}
-                                        className="mr-1"
-                                    >
-                                        <span className="flex bg-white text-red-900 py-2 gap-2 text-md rounded-sm items-center px-4">Close <ImCross></ImCross></span>
-                                    </Button>
-                                </div>
+                            <div className=" w-full p-[25px] relative">
+                              
 
                                 <div className="mt-12">
 
@@ -212,6 +203,21 @@ export function Challenge({ challenge }) {
                                 </div>
 
                             </div>
+
+                            <div className="absolute top-5 right-10 justify-end items-center">
+                                    <Button
+                                        variant="text"
+                                        color="white"
+
+                                        size="regular"
+                                        className="bg-whites"
+                                        onClick={() => handleOpen(null)}
+                                        
+                        
+                                    >
+                                     Close
+                                    </Button>
+                                </div>
                         </div>
                     </DialogBody>
 

@@ -9,6 +9,7 @@ import auth from '../middleware/auth.js';
 import verifyOtp from '../controllers/auth/verifyOtp.js';
 import resendOtp from '../controllers/auth/resendOtp.js';
 import checkVerification from '../controllers/auth/checkVerification.js';
+import checkIfAllSolved from '../controllers/auth/checkIfAllSolved.js';
 
 //routes
 router.get('/profile', auth(), profile);
@@ -17,5 +18,6 @@ router.post('/signup', signup);
 router.post('/verify-otp', verifyOtp);
 router.post('/resend-otp', resendOtp);
 router.post('/check-verification', checkVerification);
+router.get('/check-if-all-solved',auth(), checkIfAllSolved);
 
 export default router;

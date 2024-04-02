@@ -81,6 +81,26 @@ export const challengesApi = apiSlice.injectEndpoints({
             }
         }),
 
+        createChallengeByUser: builder.mutation({
+            query: (data) => ({
+                url: `challenges`,
+                method: 'POST',
+                body: data
+            }),
+            async onQueryStarted(arg, { queryFulfilled, dispatch,getState}) {
+                try {
+                    const result = await queryFulfilled;
+                    toast.success(result.data.message);
+                    // refetch the challenges
+                    dispatch(challengesApi.endpoints.getAllChallenges.initiate());
+
+                } catch (error) {
+                    toast.error(error?.error?.data?.message);
+                }
+            }
+
+        })
+
 
        
 
@@ -92,5 +112,6 @@ export const challengesApi = apiSlice.injectEndpoints({
 export const {
     useGetAllChallengesQuery,
     useSubmitSolutionMutation,
-    useGetRankingsQuery
+    useGetRankingsQuery,
+    useCreateChallengeByUserMutation
 } = challengesApi;

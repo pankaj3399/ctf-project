@@ -4,7 +4,7 @@ import TopNavbar from "../Components/Shared/TopNavbar/TopNavbar";
 
 const DashboardLayout = () => {
     return (
-        <div className="gap-2 w-full h-screen -mt-16 pt-14 fixed flex">
+        <div className="gap-2 w-full h-screen -mt-16 pt-14 fixed flex bg-black">
             <div className="w-[300px] border-r border-r-gray-200 shadow-md overflow-auto">
                 <LeftNavbar></LeftNavbar>
             </div>

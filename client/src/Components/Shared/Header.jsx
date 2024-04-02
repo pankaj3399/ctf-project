@@ -43,6 +43,16 @@ export function Header() {
                 className="p-1 font-normal text-red-800"
             >
                 <a href="#" className="flex items-center">
+                    Resource
+                </a>
+            </Typography>
+            <Typography
+                as="li"
+                variant="small"
+
+                className="p-1 font-normal text-red-800"
+            >
+                <a href="#" className="flex items-center">
                     FAQ
                 </a>
             </Typography>

@@ -5,6 +5,8 @@ import User from '../app/models/userSchema.js';
 import { buildAuthenticatedRouter } from '@adminjs/express';
 import Category from '../app/models/categorySchema.js';
 import Challanges from '../app/models/challangesSchema.js';
+import UserAttempts from '../app/models/userAttemps.js';
+import UserRankings from '../app/models/userRankings.js';
 
 const DEFAULT_ADMIN = {
     email: process.env.ADMIN_EMAIL || 'admin@example.com',
@@ -40,13 +42,25 @@ const adminOptions = {
             resource: Category,
         },
         {
+            resource: UserAttempts,
+        },
+        {
+            resource: UserRankings,
+        },
+        {
             resource: Challanges,
             options:{
                 properties: {
                     description:{
                         type: 'richtext',
                     },
-                }
+                    
+                },
+                listProperties: ['title', 'points', 'category', 'status', 'createdBy'],
+                editProperties: ['title', 'description', 'points', 'solution', 'category', 'createdBy', 'status'],
+                
+
+
             }
         },
     ],

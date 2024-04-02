@@ -1,6 +1,7 @@
 // create a model of user submissions for all the challenges
 
 import mongoose from 'mongoose';
+import Challanges from './challangesSchema.js';
 
 const userAttemptsSchema = new mongoose.Schema({
     user: {
@@ -27,6 +28,15 @@ const userAttemptsSchema = new mongoose.Schema({
     }
 }, { timestamps: true });
 
+
+userAttemptsSchema.virtual('challenges',{
+    ref: Challanges,
+    localField: 'challenge',
+    foreignField: '_id'
+})
+
+
 const UserAttempts = mongoose.model('UserAttempts', userAttemptsSchema);
+
 
 export default UserAttempts;

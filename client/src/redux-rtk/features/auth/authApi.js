@@ -47,6 +47,9 @@ export const authApi = apiSlice.injectEndpoints({
                     Cookies.set('accessToken', result.data.data.accessToken, { expires: arg.rememberMe ? 30 : 1 });
                     Cookies.set('_id', result.data.data.user._id, { expires: arg.rememberMe ? 30 : 1 });
                     toast.success(result.data.message);
+
+                    // revalidate all queries and tags
+                    
                 } catch (error) {
                     toast.error(error?.error?.data?.message)
                 }
@@ -99,6 +102,17 @@ export const authApi = apiSlice.injectEndpoints({
             }),
         }),
 
+        // check if user solved all challenges
+        checkIfUserSolvedAllChallenges: builder.query({
+            query: ()=>({
+                url : `auth/check-if-all-solved`,
+                method: 'GET',
+            }),
+            
+
+        }),
+
+
 
         // get profile endpoint here
         getProfile: builder.query({
@@ -123,5 +137,6 @@ export const {
     useGetProfileQuery,
     useVerifyOtpMutation,
     useResendOtpMutation,
-    useCheckIfUserVerifiedQuery
+    useCheckIfUserVerifiedQuery,
+    useCheckIfUserSolvedAllChallengesQuery
 } = authApi;

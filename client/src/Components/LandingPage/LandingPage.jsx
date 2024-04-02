@@ -2,7 +2,6 @@ import React from 'react';
 import bgImage from '../../assets/homepage.webp';
 
 
-import Slider from "react-slick";
 const LandingPage = () => {
 
     var settings = {

@@ -9,6 +9,7 @@ import CheckIfUserVerified from "../Components/Middleware/CheckIfUserVerified";
 import RequireAuth from "../Components/RequiredAuth/RequireAuth";
 import DashboardLayout from "../Layout/DashboardLayout";
 import Rankings from "../Components/Rankings/Rankings";
+import AddNewChallenge from "../Components/AddNewChallenge/AddNewChallenge";
 
 export const router = createBrowserRouter([
   
@@ -47,7 +48,11 @@ export const router = createBrowserRouter([
                     {
                         path: 'categories/:id',
                         element: <RequireAuth><Dashboard/></RequireAuth>
-                    }
+                    },
+                    {
+                        path: 'add-new-challenge',
+                        element: <RequireAuth><AddNewChallenge/></RequireAuth>
+                    },
                 ]
             },
           

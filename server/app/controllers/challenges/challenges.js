@@ -8,7 +8,14 @@ import UserRankings from "../../models/userRankings.js";
 const getAllChallenges = catchAsync(
     async (req, res) => {
         // get all the challenges
-        const challenges = await Challanges.find().populate("category").lean();
+        const challenges = await Challanges.find({ status: 'published' }).populate([
+            {
+                path: 'author',
+                
+            }, {
+                path: 'category',
+            }
+        ]).select("-solution").lean();
 
         sendResponse(res, {
             statusCode: httpStatus.OK,
@@ -20,6 +27,32 @@ const getAllChallenges = catchAsync(
     }
 )
 
+const createChallengeByUser = catchAsync(
+    async (req, res) => {
+        // create a challenge by user
+        const challenge = new Challanges({
+            title: req.body.title,
+            description: req.body.description,
+            points: req.body.points,
+            solution: req.body.solution,
+            category: req.body.category,
+            createdBy: 'user',
+            author: req.user._id,
+            status: 'pending'
+        });
+
+        await challenge.save();
+
+
+        sendResponse(res, {
+            statusCode: httpStatus.CREATED,
+            success: true,
+            message: `Challenge created successfully!`,
+            data: challenge
+        });
+
+    }
+)
 
 const submitChallenge = catchAsync(
     async (req, res) => {
@@ -59,14 +92,14 @@ const submitChallenge = catchAsync(
         if (submission.isCorrect && !alreadySolved) {
             const userRanking = await
                 UserRankings.findOneAndUpdate({ user: _id }, { $inc: { points: challenge.points, totalCorrectAttempts: 1 } }, { new: true, upsert: true });
-            
+
         }
 
         // send message about the submission if it is correct or not
         const message = submission.isCorrect ? `Accepted` : `Wrong Answer`;
         const success = submission.isCorrect ? true : false;
 
-        
+
 
         sendResponse(res, {
             statusCode: httpStatus.OK,
@@ -97,5 +130,6 @@ const getUserRankings = catchAsync(
 export {
     getAllChallenges,
     submitChallenge,
-    getUserRankings
+    getUserRankings,
+    createChallengeByUser
 }

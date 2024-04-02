@@ -43,16 +43,21 @@ const Dashboard = () => {
 
 
             <div className="mx-4 relative h-full">
-                <div className="z-50 bg-white">
+                <div className="z-50 text-white">
                     <h1 className="flex justify-between w-full gap-[15px] items-center text-[25px]">
                         <span className="text-[25px] font-extrabold	">
                             {
                                 selectedCategory ? selectedCategory?.name : 'All Challenges'
                             }
                         </span>
-                        <span>
-                            <Link to="/dashboard/rankings" className="border rounded-md border-red-600 text-red-600 px-3 py-2 text-[14px] hover:bg-red-600 hover:text-white duration-300 ease-linear">Rankings</Link>
-                        </span>
+                        <div>
+                            <span>
+                                <Link to="/dashboard/rankings" className="border rounded-md border-red-600 text-red-600 px-3 py-2 text-[14px] hover:bg-red-600 hover:text-white duration-300 ease-linear">Rankings</Link>
+                            </span>
+                            <span className='ml-5'>
+                                <Link to="/dashboard/add-new-challenge" className="border rounded-md border-red-600 text-white bg-black px-3 py-2 text-[14px] hover:bg-red-600 hover:text-white duration-300 ease-linear">Add New Challenge</Link>
+                            </span>
+                        </div>
                     </h1>
 
                 </div>
