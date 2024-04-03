@@ -10,11 +10,7 @@ const Resources = () => {
     return (
         <div className='px-5 md:px-24 py-8 bg-black min-h-screen w-full text-white'>
             {/* braedcumbs */}
-            <div className='flex items-center gap-2'>
-                <p>Home</p>
-                <p>/</p>
-                <p>Resources</p>
-            </div>
+        
 
             <div className='mt-5'>
                 <h1 className='text-3xl font-normal'>Categories</h1>
