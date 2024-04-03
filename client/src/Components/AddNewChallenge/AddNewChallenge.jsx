@@ -42,7 +42,7 @@ const AddNewChallenge = () => {
             margin: 'auto',
             marginTop: '20vh'
         }} /> :
-            response && !response?.data?.isAllSolved ? (
+            response && response?.data?.isAllSolved ? (
 
                 <div className='p-5 relative w-full h-full pb-5 mt-5 overflow-y-auto pr-5'>
 
