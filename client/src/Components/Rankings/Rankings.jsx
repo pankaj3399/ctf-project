@@ -15,7 +15,7 @@ const Rankings = () => {
 
             {/* create a rankings tables of top 20 users list */}
             <div className="p-4">
-                <h1 className="text-xl font-bold text-white">Rankings</h1>
+                <h1 className="text-2xl font-medium">Rankings</h1>
                 <table className='w-full my-8'>
                     <thead>
                         <tr className='font-medium border p-4'>

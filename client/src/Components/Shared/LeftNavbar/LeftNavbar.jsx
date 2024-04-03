@@ -18,7 +18,7 @@ const LeftNavbar = () => {
 
 
     return (
-        <div className='pt-8 pb-8 px-3 w-full bg-[#383838] h-full text-white'>
+        <div className='pt-8 pb-8 px-3 w-full bg-[#eeeeee] h-full'>
             <div>
                 <div className='flex items-center text-base	font-bold'>
                     <p className='ms-2'>Categories</p>

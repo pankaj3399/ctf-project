@@ -42,7 +42,7 @@ const AddNewChallenge = () => {
             margin: 'auto',
             marginTop: '20vh'
         }} /> :
-            response && response?.data?.isAllSolved ? (
+            response && !response?.data?.isAllSolved ? (
 
                 <div className='p-5 relative w-full h-full pb-5 mt-5 overflow-y-auto pr-5'>
 
@@ -51,7 +51,7 @@ const AddNewChallenge = () => {
 
                         <div className="z-50">
                             <h1 className="flex justify-between w-full gap-[15px] items-center text-[25px]">
-                                <span className="text-[25px] font-extrabold	text-white">
+                                <span className="text-[25px] font-bold	text-black">
                                     Create New Challenge
                                 </span>
                                 <div>
@@ -69,12 +69,12 @@ const AddNewChallenge = () => {
 
                             <form onSubmit={handleSubmit(onSubmit)} className=" rounded px-8 pt-6 pb-16 my-4">
                                 <div className="mb-4">
-                                    <label className="block text-gray-300 text-sm mb-2" >
+                                    <label className="block text-gray-700 text-sm mb-2" >
                                         Title
                                     </label>
                                     <input
                                         {...register("title", { required: true })}
-                                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-300 leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="Challenge Name"
+                                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="Challenge Name"
                                     />
                                     {errors.title?.type === "required" && (
                                         <p role="alert" className='errorText'>Title is required</p>
@@ -82,10 +82,10 @@ const AddNewChallenge = () => {
 
                                 </div>
                                 <div className="mb-6">
-                                    <label className="block text-gray-300 text-sm mb-2" >
+                                    <label className="block text-gray-700 text-sm mb-2" >
                                         Description
                                     </label>
-                                    <textarea {...register("description", { required: true })} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-300 leading-tight focus:outline-none focus:shadow-outline" id="password" type="text" placeholder="Description" />
+                                    <textarea {...register("description", { required: true })} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="password" type="text" placeholder="Description" />
 
                                     {errors.description?.type === "required" && (
                                         <p role="alert" className='errorText'>description is required</p>
@@ -96,7 +96,7 @@ const AddNewChallenge = () => {
                                 <div className="flex items-center justify-between gap-4">
                                     {/* category selections */}
                                     <div className="mb-6 w-full">
-                                        <label className="block text-gray-300 text-sm mb-2" >
+                                        <label className="block text-gray-700 text-sm mb-2" >
                                             Category
                                         </label>
                                         <select {...register("category", { required: true })} className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline">
@@ -114,10 +114,10 @@ const AddNewChallenge = () => {
 
                                     {/* points */}
                                     <div className="mb-6 w-full">
-                                        <label className="block text-gray-300 text-sm mb-2" >
+                                        <label className="block text-gray-700 text-sm mb-2" >
                                             Points
                                         </label>
-                                        <input {...register("points", { required: true, min: 0 })} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-300 leading-tight focus:outline-none focus:shadow-outline" type="number" min={0} placeholder="Points" />
+                                        <input {...register("points", { required: true, min: 0 })} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="number" min={0} placeholder="Points" />
                                         {errors.points?.type === "required" && (
                                             <p role="alert" className='errorText'>Points is required</p>
                                         )}
@@ -127,10 +127,10 @@ const AddNewChallenge = () => {
                                 {/* solution */}
                                 <div className="mb-6">
 
-                                    <label className="block text-gray-300 text-sm mb-2" >
+                                    <label className="block text-gray-700 text-sm mb-2" >
                                         Solution
                                     </label>
-                                    <input {...register("solution", { required: true })} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-300 leading-tight focus:outline-none focus:shadow-outline" id="password" type="text" placeholder="Solution" />
+                                    <input {...register("solution", { required: true })} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="password" type="text" placeholder="Solution" />
                                     {errors.solution?.type === "required" && (
                                         <p role="alert" className='errorText'>Solution is required</p>
                                     )}

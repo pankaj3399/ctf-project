@@ -43,7 +43,7 @@ const Dashboard = () => {
 
 
             <div className="mx-4 relative h-full">
-                <div className="z-50 text-white">
+                <div className="z-50">
                     <h1 className="flex justify-between w-full gap-[15px] items-center text-[25px]">
                         <span className="text-[25px] font-extrabold	">
                             {

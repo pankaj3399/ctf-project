@@ -82,7 +82,7 @@ export function Challenge({ challenge }) {
 
     return (
         <>
-            <Card className={`bg-[#262626] cursor-pointer max-w-[24rem] overflow-hidden my-[5px] rounded-sm relative ${isSolved && 'border-2 border-green-400 shadow-md shadow-green-400'}`} onClick={() => handleOpen("lg")}>
+            <Card className={`cursor-pointer max-w-[24rem] overflow-hidden my-[5px] rounded-sm relative ${isSolved && 'border-2 border-green-400 shadow-md shadow-green-400'}`} onClick={() => handleOpen("lg")}>
                 <CardHeader
                     floated={false}
                     shadow={false}
@@ -93,7 +93,7 @@ export function Challenge({ challenge }) {
 
                 </CardHeader>
                 <CardBody className="p-[10px]">
-                    <Typography color="white" className="text-[14px] font-bold">
+                    <Typography color="blue-gray" className="text-[14px] font-bold">
                         {title}
                     </Typography>
 
