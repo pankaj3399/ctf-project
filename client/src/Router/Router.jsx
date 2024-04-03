@@ -10,6 +10,7 @@ import RequireAuth from "../Components/RequiredAuth/RequireAuth";
 import DashboardLayout from "../Layout/DashboardLayout";
 import Rankings from "../Components/Rankings/Rankings";
 import AddNewChallenge from "../Components/AddNewChallenge/AddNewChallenge";
+import Resources from "../Components/Resources/Resources";
 
 export const router = createBrowserRouter([
   
@@ -20,6 +21,10 @@ export const router = createBrowserRouter([
             {
                 path: '/',
                 element: <LandingPage />
+            },
+            {
+                path: '/resources',
+                element: <Resources />
             },
             {
                 path: '/login',

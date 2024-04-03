@@ -8,7 +8,7 @@ import {
     Card,
     Collapse,
 } from "@material-tailwind/react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUrl } from "../../configs/constants";
 import { userLoggedOut } from "../../redux-rtk/features/auth/authSlice";
@@ -42,9 +42,9 @@ export function Header() {
 
                 className="p-1 font-normal text-red-800"
             >
-                <a href="#" className="flex items-center">
+                <Link to="/resources" className="flex items-center">
                     Resource
-                </a>
+                </Link>
             </Typography>
             <Typography
                 as="li"

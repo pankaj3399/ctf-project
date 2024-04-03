@@ -36,7 +36,7 @@ const AddNewChallenge = () => {
 
 
     return (
-        isLoading ? <LoaderIcon style={{
+        (isLoading || isFetching) ? <LoaderIcon style={{
             width: '25px',
             height: '25px',
             margin: 'auto',
