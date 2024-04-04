@@ -1,5 +1,6 @@
 import React from 'react';
 import bgImage from '../../assets/homepage.webp';
+import { Link } from 'react-router-dom';
 
 
 const LandingPage = () => {
@@ -45,7 +46,7 @@ const LandingPage = () => {
                 <h1 className="text-white text-6xl font-bold">Capture The Flag</h1>
                 <p className="text-white text-2xl my-5">Ready . Set . PWN!</p>
 
-                <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">Join Now</button>
+                <Link to="/signup" className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">Join Now</Link>
 
 
             </div>

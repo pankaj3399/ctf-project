@@ -11,7 +11,7 @@ const Rankings = () => {
     }
 
     return (
-        <div>
+        <div className='px-5 lg:px-24'>
 
             {/* create a rankings tables of top 20 users list */}
             <div className="p-4">

@@ -9,6 +9,8 @@ import { loginUrl } from '../configs/constants';
 export default function useAuthCheck() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const location = window.location.pathname;
+    const from = location;
     const [authChecked, setAuthChecked] = useState(false);
     const [authenticated, setAuthenticated] = useState(false);
 
@@ -51,7 +53,7 @@ export default function useAuthCheck() {
                 setAuthChecked(true);
             }
         } else {
-            navigate(loginUrl);
+            // navigate(loginUrl);
             setAuthChecked(true);
             setAuthenticated(true);
         }

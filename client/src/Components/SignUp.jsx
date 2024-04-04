@@ -33,7 +33,7 @@ const SignUp = () => {
     const [otpSent, setOtpSent] = React.useState(false);
     const [email,setEmail] = React.useState(null);
     const [otp, setOtp] = React.useState(null);
-    const from = location.state?.from.pathname || libraryUrl;
+    const from = location.state?.from.pathname || '/dashboard';
 
     const auth = useSelector((state) => state.auth);
     const [signup, { isLoading, isSuccess }] = useSignupMutation();

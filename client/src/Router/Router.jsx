@@ -46,10 +46,7 @@ export const router = createBrowserRouter([
                         path: '',
                         element: <RequireAuth><Dashboard/></RequireAuth>
                     },
-                    {
-                        path: 'rankings/',
-                        element: <RequireAuth><Rankings/></RequireAuth>
-                    },
+              
                     {
                         path: 'categories/:id',
                         element: <RequireAuth><Dashboard/></RequireAuth>
@@ -59,6 +56,10 @@ export const router = createBrowserRouter([
                         element: <RequireAuth><AddNewChallenge/></RequireAuth>
                     },
                 ]
+            },
+            {
+                path: '/dashboard/rankings/',
+                element: <RequireAuth><Rankings/></RequireAuth>
             },
           
         ]

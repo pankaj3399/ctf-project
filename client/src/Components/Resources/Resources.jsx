@@ -1,8 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { useGetCategoriesQuery } from '../../redux-rtk/features/category/categoryApi';
 
 const Resources = () => {
+    useGetCategoriesQuery()
 
     const categories = useSelector((state) => state.categories.categories);
     const navigate = useNavigate();

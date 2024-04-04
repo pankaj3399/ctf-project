@@ -42,8 +42,8 @@ export function Header() {
 
                 className="p-1 font-normal text-red-800"
             >
-                <Link to="/resources" className="flex items-center">
-                    Resource
+                <Link to="/dashboard" className="flex items-center">
+                    Practice
                 </Link>
             </Typography>
             <Typography
@@ -52,10 +52,11 @@ export function Header() {
 
                 className="p-1 font-normal text-red-800"
             >
-                <a href="#" className="flex items-center">
-                    FAQ
-                </a>
+                <Link to="/resources" className="flex items-center">
+                    Resource
+                </Link>
             </Typography>
+
             <Typography
                 as="li"
                 variant="small"
@@ -91,7 +92,7 @@ export function Header() {
 
     const loggedInMenu = (
         <div className="flex items-center gap-x-3">
-            <Link to="/dashboard">
+            <Link to="/dashboard/rankings">
                 <Button
                     variant="text"
                     size="sm"
@@ -118,10 +119,15 @@ export function Header() {
 
                     className="mr-4 cursor-pointer py-1.5 font-medium text-2xl"
                 >
-                    <Link to="/" className="flex items-center gap-2 font-bold text-red-600">
+                    {
+                        auth.isAuthenticated ? <Link to="/dashboard" className="flex items-center gap-2 font-bold text-red-600">
+                        <img src={ctfLogo} className="w-[60px]" alt="" />
+                        CyberLand
+                    </Link> : <Link to="/" className="flex items-center gap-2 font-bold text-red-600">
                         <img src={ctfLogo} className="w-[60px]" alt="" />
                         CyberLand
                     </Link>
+                    }
                 </Typography>
                 <div className="flex items-center gap-6">
                     <div className="mr-4 hidden lg:block">{navList}</div>
@@ -169,14 +175,11 @@ export function Header() {
             </div>
             <Collapse open={openNav}>
                 {navList}
-                <div className="flex items-center gap-x-1">
-                    <Button fullWidth variant="text" size="sm" className="">
-                        <span>Log In</span>
-                    </Button>
-                    <Button fullWidth variant="gradient" size="sm" className="">
-                        <span>Sign in</span>
-                    </Button>
-                </div>
+
+                {
+                    auth.isAuthenticated ? loggedInMenu : loggedOutMenu
+                }
+
             </Collapse>
         </Navbar>
 
