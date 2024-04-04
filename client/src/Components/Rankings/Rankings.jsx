@@ -30,7 +30,7 @@ const Rankings = () => {
                     <tbody>
                         {
                             data && data?.data?.map((user, index) => (
-                                <tr key={user?._id} className={`border p-4 text-white ${currentUser?._id === user?.user?._id && 'border-2 border-green-500 text-white'}`}>
+                                <tr key={user?._id} className={`border p-4  ${currentUser?._id === user?.user?._id && 'border-2 border-green-500 '}`}>
                                     <td className='border border-gray-400 p-2 text-center'>{index+1}</td>
 
                                     <td className='border border-gray-400 p-2 text-center'> {user?.user?.email} </td>
